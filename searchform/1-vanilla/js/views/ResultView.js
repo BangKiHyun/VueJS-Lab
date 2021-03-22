@@ -21,10 +21,10 @@ ResultView.getSearchResultsHtml = function (data) {
 }
 
 ResultView.getSearchItemHtml = function (item) {
-    return '<li>
-        <img src = "${item.image}">
-        <p>${item.name} </p>
-        </li>'
+    return `<li>
+    <img src="${item.image}" />
+    <p>${item.name}</p>
+  </li>`
 }
 
 export default ResultView
