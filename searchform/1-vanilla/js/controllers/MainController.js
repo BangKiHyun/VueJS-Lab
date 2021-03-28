@@ -2,6 +2,7 @@ import FormView from "../views/FormView.js";
 import ResultView from "../views/ResultView.js";
 import TabView from "../views/TabView.js";
 import KeywordView from "../views/KeywordVIew.js";
+import HistoryView from "../views/HistoryView.js";
 
 import SearchModel from "../models/SearchModel.js";
 import KeywordModel from "../models/KeywordModel.js";
@@ -20,6 +21,10 @@ export default {
 
         KeywordView.setup(document.querySelector('#search-keyword'))
             .on('@click', e => this.onClickKeyword(e.detail.keyword))
+
+        HistoryView.setup(document.querySelector('#search-history'))
+            .on('@click', e => this.onClickHistory(e.detail.keyword))
+
         ResultView.setup(document.querySelector("#search-result"))
 
         this.selectedTab = '추천 검색어'
@@ -76,6 +81,10 @@ export default {
     },
 
     onClickKeyword(keyword) {
+        this.search(keyword)
+    },
+
+    onClickHistory(keyword){
         this.search(keyword)
     }
 }
