@@ -3,10 +3,9 @@ import ResultView from "../views/ResultView.js";
 import TabView from "../views/TabView.js";
 import KeywordView from "../views/KeywordVIew.js";
 import HistoryView from "../views/HistoryView.js";
-
 import SearchModel from "../models/SearchModel.js";
 import KeywordModel from "../models/KeywordModel.js";
-import HistoryModel from "../models/HistoryModel";
+import HistoryModel from "../models/HistoryModel.js";
 
 const tag = '[MainController]'
 
