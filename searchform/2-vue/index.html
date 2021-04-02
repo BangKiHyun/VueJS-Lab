@@ -23,6 +23,19 @@
             <!-- v-show: 해당 디렉티브 값이 false일 때 해당 태그의 스타일을 display:none 처리를 해줌 -->
             <button v-show="query.length" v-on:submit="onReset" type="reset" class="btn-reset"></button>
         </form>
+
+        <div v-if="submitted">
+            <div v-if="searchResult.length">
+                <ul>
+                    <li v-for="item in searchResult">
+                        <img v-bind:src="item.image"> {{item.name}}
+                    </li>
+                </ul>
+            </div>
+            <div v-else>
+                {{query}} 검색어로 찾을수 없습니다
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://unpkg.com/vue"></script>
