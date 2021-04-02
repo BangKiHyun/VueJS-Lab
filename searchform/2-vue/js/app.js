@@ -4,6 +4,19 @@ new Vue({
     el: '#app',
     data: {
         //입력 데이터 받아서 저장할 data
-        query: ''
+        query: '',
+    },
+    methods: {
+        onSubmit(e) {
+            debugger
+        },
+        onKeyup() {
+            if (!this.query.length) this.onReset()
+        },
+        onReset() {
+            this.query = ''
+            // 검색 결과 숨기는 로직
+            debugger
+        }
     }
 })
