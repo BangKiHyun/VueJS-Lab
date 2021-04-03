@@ -1,5 +1,6 @@
 import SearchModel from "./models/SearchModel.js";
 import KeywordModel from "./models/KeywordModel.js";
+import HistoryModel from "./models/HistoryModel.js";
 
 new Vue({
     // element를 의미하는 el
@@ -12,11 +13,13 @@ new Vue({
         tabs: ['추천 검색어', '최근 검색어'],
         selectedTab: '',
         keywords: [],
+        history: [],
         searchResult: []
     },
     created() {
         this.selectedTab = this.tabs[0]
         this.fetchKeyword();
+        this.fetchHistory();
     },
     methods: {
         onSubmit(e) {
@@ -37,6 +40,15 @@ new Vue({
                 this.keywords = data
             })
         },
+        fetchHistory() {
+            HistoryModel.list().then(data => {
+                this.history = data
+            })
+        },
+        onClickRemoveHistory(keyword) {
+          HistoryModel.remove(keyword)
+            this.fetchHistory()
+        },
         onReset() {
             this.query = ''
             // 검색 결과 숨기는 로직
@@ -48,6 +60,8 @@ new Vue({
                 this.submitted = true
                 this.searchResult = data
             })
+            HistoryModel.add(this.query)
+            this.fetchHistory()
         },
     }
 })
