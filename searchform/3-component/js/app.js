@@ -7,7 +7,7 @@ import FormComponent from "./components/FormComponent.js";
 new Vue({
     el: '#app',
     data: {
-        query: '',
+        query: 'search',
         submitted: false,
         tabs: ['추천 검색어', '최근 검색어'],
         selectedTab: '',
@@ -24,11 +24,9 @@ new Vue({
         this.fetchHistory()
     },
     methods: {
-        onSubmit(e) {
+        onSubmit(query) {
+            this.query = query
             this.search()
-        },
-        onKeyup(e) {
-            if (!this.query.length) this.resetForm()
         },
         onReset(e) {
             this.resetForm()
