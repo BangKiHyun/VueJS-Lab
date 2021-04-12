@@ -8,6 +8,12 @@ export default {
             inputValue: this.value
         }
     },
+    // vue model을 감시하고 있다가 해당 값이 변경되면 실행됨
+    watch: {
+      value(newVal, oldVal) {
+          this.inputValue = newVal
+      }
+    },
     methods: {
         onSubmit() {
             this.$emit('@submit', this.inputValue.trim())
